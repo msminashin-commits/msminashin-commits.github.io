@@ -62,8 +62,8 @@ button{
     bottom:20px;
 
     width:auto;
-    font-size:20px;
-    padding:10px 20px;
+    font-size:14px;
+    padding:5px 10px;
 }
 </style>
 
