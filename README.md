@@ -58,12 +58,12 @@ button{
 /* 戻るボタン */
 #backButton{
     position:absolute;
-    right:20px;
-    bottom:20px;
+    right:10px;
+    bottom:10px;
 
     width:auto;
-    font-size:14px;
-    padding:5px 10px;
+    font-size:12px;
+    padding:4px 8px;
 }
 </style>
 
@@ -82,6 +82,9 @@ button{
     <p>f</p>
     <input type="number" id="f">
 
+    <p>M</p>
+    <input type="number" id="M" step="any">
+
     <button onclick="showResult()">表示</button>
 
 </div>
@@ -94,7 +97,7 @@ button{
     </div>
 
     <button id="backButton" onclick="goBack()">
-        入力画面に戻る
+        戻る
     </button>
 
 </div>
@@ -106,6 +109,7 @@ function showResult(){
     const lb = document.getElementById("lb").value;
     const lc = document.getElementById("lc").value;
     const f  = document.getElementById("f").value;
+    const M  = document.getElementById("M").value;
 
     document.getElementById("inputArea").style.display = "none";
     document.getElementById("resultArea").style.display = "flex";
@@ -113,7 +117,8 @@ function showResult(){
     document.getElementById("resultText").innerHTML =
         `lb = ${lb}<br>
          lc = ${lc}<br>
-         f = ${f}`;
+         f = ${f}<br>
+         M = ${M}`;
 }
 
 function goBack(){
@@ -121,10 +126,12 @@ function goBack(){
     document.getElementById("resultArea").style.display = "none";
     document.getElementById("inputArea").style.display = "block";
 
-    /* 入力値を消したい場合は以下を有効化
+    /* 入力値を消したい場合は以下を有効化 */
+    /*
     document.getElementById("lb").value = "";
     document.getElementById("lc").value = "";
     document.getElementById("f").value = "";
+    document.getElementById("M").value = "";
     */
 }
 
