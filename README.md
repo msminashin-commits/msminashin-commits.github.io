@@ -29,6 +29,7 @@ button{
     width:100%;
     font-size:24px;
     padding:15px;
+    margin-top:10px;
 }
 
 /* 結果画面 */
@@ -36,26 +37,37 @@ button{
     display:none;
     width:100vw;
     height:100vh;
-
     justify-content:center;
     align-items:center;
-
-    font-size:12vw;
-    font-weight:bold;
-    text-align:center;
-    line-height:1.8;
 }
 
 /* 横向き表示 */
 .landscape{
     transform:rotate(90deg);
+    text-align:center;
+}
+
+/* 結果文字 */
+#resultText{
+    font-size:15vw;   /* ここで文字サイズ調整 */
+    font-weight:bold;
+    line-height:1.4;
+}
+
+/* 戻るボタン */
+#backButton{
+    margin-top:30px;
+    font-size:4vw;
+    padding:10px 20px;
 }
 </style>
-</head>
 
+</head>
 <body>
 
+<!-- 入力画面 -->
 <div id="inputArea">
+
     <p>lb</p>
     <input type="number" id="lb">
 
@@ -66,13 +78,26 @@ button{
     <input type="number" id="f">
 
     <button onclick="showResult()">表示</button>
+
 </div>
 
+<!-- 結果画面 -->
 <div id="resultArea">
-    <div id="resultText" class="landscape"></div>
+
+    <div class="landscape">
+
+        <div id="resultText"></div>
+
+        <button id="backButton" onclick="goBack()">
+            入力画面に戻る
+        </button>
+
+    </div>
+
 </div>
 
 <script>
+
 function showResult(){
 
     const lb = document.getElementById("lb").value;
@@ -80,7 +105,6 @@ function showResult(){
     const f  = document.getElementById("f").value;
 
     document.getElementById("inputArea").style.display = "none";
-
     document.getElementById("resultArea").style.display = "flex";
 
     document.getElementById("resultText").innerHTML =
@@ -88,6 +112,20 @@ function showResult(){
          lc = ${lc}<br>
          f = ${f}`;
 }
+
+function goBack(){
+
+    document.getElementById("resultArea").style.display = "none";
+    document.getElementById("inputArea").style.display = "block";
+
+    /* 入力欄を空にしたい場合は以下を有効化 */
+    /*
+    document.getElementById("lb").value = "";
+    document.getElementById("lc").value = "";
+    document.getElementById("f").value = "";
+    */
+}
+
 </script>
 
 </body>
