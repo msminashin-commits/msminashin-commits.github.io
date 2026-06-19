@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>値表示</title>
+<title>撮影条件表示</title>
 
 <style>
 body{
@@ -45,14 +45,17 @@ button{
 /* 横向き表示 */
 .landscape{
     transform:rotate(90deg);
-    text-align:center;
 }
 
-/* 結果文字 */
+/* 結果表示 */
 #resultText{
-    font-size:15vw;
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:20px 80px;
+
+    font-size:9vw;
     font-weight:bold;
-    line-height:1.4;
+    text-align:left;
 }
 
 /* 戻るボタン */
@@ -66,11 +69,10 @@ button{
     padding:4px 8px;
 }
 </style>
-
 </head>
+
 <body>
 
-<!-- 入力画面 -->
 <div id="inputArea">
 
     <p>lb</p>
@@ -85,11 +87,19 @@ button{
     <p>M</p>
     <input type="number" id="M" step="any">
 
+    <p>シャッタースピード</p>
+    <input type="text" id="SS" placeholder="例: 1/1000">
+
+    <p>F値</p>
+    <input type="number" id="Fnum" step="0.1">
+
+    <p>ISO</p>
+    <input type="number" id="ISO">
+
     <button onclick="showResult()">表示</button>
 
 </div>
 
-<!-- 結果画面 -->
 <div id="resultArea">
 
     <div class="landscape">
@@ -106,33 +116,37 @@ button{
 
 function showResult(){
 
-    const lb = document.getElementById("lb").value;
-    const lc = document.getElementById("lc").value;
-    const f  = document.getElementById("f").value;
-    const M  = document.getElementById("M").value;
+    const lb   = document.getElementById("lb").value;
+    const lc   = document.getElementById("lc").value;
+    const f    = document.getElementById("f").value;
+    const M    = document.getElementById("M").value;
+    const SS   = document.getElementById("SS").value;
+    const Fnum = document.getElementById("Fnum").value;
+    const ISO  = document.getElementById("ISO").value;
 
     document.getElementById("inputArea").style.display = "none";
     document.getElementById("resultArea").style.display = "flex";
 
     document.getElementById("resultText").innerHTML =
-        `lb = ${lb}<br>
-         lc = ${lc}<br>
-         f = ${f}<br>
-         M = ${M}`;
+    `
+    <div>lb=${lb}</div>
+    <div>SS=${SS}</div>
+
+    <div>lc=${lc}</div>
+    <div>F=${Fnum}</div>
+
+    <div>f=${f}</div>
+    <div>ISO=${ISO}</div>
+
+    <div>M=${M}</div>
+    <div></div>
+    `;
 }
 
 function goBack(){
 
     document.getElementById("resultArea").style.display = "none";
     document.getElementById("inputArea").style.display = "block";
-
-    /* 入力値を消したい場合は以下を有効化 */
-    /*
-    document.getElementById("lb").value = "";
-    document.getElementById("lc").value = "";
-    document.getElementById("f").value = "";
-    document.getElementById("M").value = "";
-    */
 }
 
 </script>
