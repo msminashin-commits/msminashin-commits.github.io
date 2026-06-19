@@ -1,93 +1,94 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>数値入力表示</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      padding: 20px;
-      background: #f5f5f5;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>値表示</title>
 
-    h1 {
-      text-align: center;
-      font-size: 24px;
-    }
+<style>
+body{
+    margin:0;
+    font-family:sans-serif;
+    background:white;
+}
 
-    .box {
-      background: white;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px #ccc;
-      max-width: 400px;
-      margin: auto;
-    }
+/* 入力画面 */
+#inputArea{
+    padding:20px;
+}
 
-    label {
-      display: block;
-      margin-top: 15px;
-      font-size: 18px;
-    }
+input{
+    width:100%;
+    font-size:24px;
+    padding:10px;
+    margin-bottom:15px;
+    box-sizing:border-box;
+}
 
-    input {
-      width: 100%;
-      font-size: 20px;
-      padding: 10px;
-      margin-top: 5px;
-      box-sizing: border-box;
-    }
+button{
+    width:100%;
+    font-size:24px;
+    padding:15px;
+}
 
-    .result {
-      margin-top: 25px;
-      font-size: 22px;
-      line-height: 1.8;
-      background: #eef;
-      padding: 15px;
-      border-radius: 10px;
-    }
-  </style>
+/* 結果画面 */
+#resultArea{
+    display:none;
+    width:100vw;
+    height:100vh;
+
+    justify-content:center;
+    align-items:center;
+
+    font-size:8vw;
+    font-weight:bold;
+    text-align:center;
+    line-height:1.8;
+}
+
+/* 横向き表示 */
+.landscape{
+    transform:rotate(90deg);
+}
+</style>
 </head>
+
 <body>
 
-  <h1>数値入力</h1>
+<div id="inputArea">
+    <p>lb</p>
+    <input type="number" id="lb">
 
-  <div class="box">
-    <label>
-      lb =
-      <input type="number" id="lb" oninput="updateDisplay()">
-    </label>
+    <p>lc</p>
+    <input type="number" id="lc">
 
-    <label>
-      lc =
-      <input type="number" id="lc" oninput="updateDisplay()">
-    </label>
+    <p>f</p>
+    <input type="number" id="f">
 
-    <label>
-      f =
-      <input type="number" id="f" oninput="updateDisplay()">
-    </label>
+    <button onclick="showResult()">表示</button>
+</div>
 
-    <div class="result" id="result">
-      lb = <br>
-      lc = <br>
-      f =
-    </div>
-  </div>
+<div id="resultArea">
+    <div id="resultText" class="landscape"></div>
+</div>
 
-  <script>
-    function updateDisplay() {
-      const lb = document.getElementById("lb").value;
-      const lc = document.getElementById("lc").value;
-      const f = document.getElementById("f").value;
+<script>
+function showResult(){
 
-      document.getElementById("result").innerHTML =
+    const lb = document.getElementById("lb").value;
+    const lc = document.getElementById("lc").value;
+    const f  = document.getElementById("f").value;
+
+    document.getElementById("inputArea").style.display = "none";
+
+    document.getElementById("resultArea").style.display = "flex";
+
+    document.getElementById("resultText").innerHTML =
         `lb = ${lb}<br>
          lc = ${lc}<br>
          f = ${f}`;
-    }
-  </script>
+}
+</script>
 
 </body>
 </html>
