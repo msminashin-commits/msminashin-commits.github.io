@@ -40,7 +40,7 @@ button{
     justify-content:center;
     align-items:center;
 
-    font-size:8vw;
+    font-size:12vw;
     font-weight:bold;
     text-align:center;
     line-height:1.8;
