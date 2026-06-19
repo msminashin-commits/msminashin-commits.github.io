@@ -42,7 +42,7 @@ button{
     position:relative;
 }
 
-/* 数値表示を横向き */
+/* 横向き表示 */
 .landscape{
     transform:rotate(90deg);
     text-align:center;
@@ -57,22 +57,17 @@ button{
 
 /* 戻るボタン */
 #backButton{
-    position:fixed;
-    top:10px;
-    right:10px;
+    position:absolute;
+    right:20px;
+    bottom:20px;
 
     width:auto;
-    padding:12px 8px;
-
     font-size:20px;
-
-    writing-mode:vertical-rl;
-
-    z-index:1000;
+    padding:10px 20px;
 }
 </style>
-</head>
 
+</head>
 <body>
 
 <!-- 入力画面 -->
@@ -94,13 +89,13 @@ button{
 <!-- 結果画面 -->
 <div id="resultArea">
 
-    <button id="backButton" onclick="goBack()">
-        戻る
-    </button>
-
     <div class="landscape">
         <div id="resultText"></div>
     </div>
+
+    <button id="backButton" onclick="goBack()">
+        入力画面に戻る
+    </button>
 
 </div>
 
@@ -126,7 +121,7 @@ function goBack(){
     document.getElementById("resultArea").style.display = "none";
     document.getElementById("inputArea").style.display = "block";
 
-    /* 入力欄を毎回空にする場合は下を有効化
+    /* 入力値を消したい場合は以下を有効化
     document.getElementById("lb").value = "";
     document.getElementById("lc").value = "";
     document.getElementById("f").value = "";
